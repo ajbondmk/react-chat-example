@@ -32,19 +32,19 @@ class MessageForm extends Component {
 class App extends Component {
 
   state = {
-    messages: [{name: "Aliyah", value: "Initial message"}],
+    messages: [],
   }
 
-  sendMessage(message) {
-    this.setState({messages: this.state.messages.concat({name: "Aliyah", value: message})})
+  sendMessage(name) {
+    return (message) => this.setState({messages: this.state.messages.concat({name: name, value: message})})
   }
 
   render() {
     return (
       <div className="App">
         {this.state.messages.map((message, i) => <Message key={i} {...message}/>)}
-        <MessageForm onSubmit={this.sendMessage.bind(this)}/>
-        <MessageForm onSubmit={this.sendMessage.bind(this)}/>
+        <MessageForm onSubmit={this.sendMessage("Robin")}/>
+        <MessageForm onSubmit={this.sendMessage("Aliyah")}/>
       </div>
     )
   }
